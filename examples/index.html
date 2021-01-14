@@ -12,6 +12,7 @@
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.585.0.min.js"></script>
     <script src="https://unpkg.com/@ungap/url-search-params"></script>
     <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+    <script src="https://player.live-video.net/1.2.0/amazon-ivs-player.min.js"></script>
     <link rel="icon" type="image/png" href="favicon.ico">
 </head>
 <body>
@@ -109,6 +110,17 @@
 
         <div id="master" class="d-none">
             <h2>Master</h2>
+            <div>
+                    <video id="video-player" playsinline></video>
+                    <script>
+                    if (IVSPlayer.isPlayerSupported) {
+                        const player = IVSPlayer.create();
+                        player.attachHTMLVideoElement(document.getElementById('video-player'));
+                        player.load('https://1f7381a5840c.us-east-1.playback.live-video.net/api/video/v1/us-east-1.268739763824.channel.anbccylP8imQ.m3u8');
+                        player.play();
+                    }
+                    </script>
+            </div>
             <div class="row">
                 <div class="col">
                     <h5>Master Section</h5>
